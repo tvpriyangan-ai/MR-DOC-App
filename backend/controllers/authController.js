@@ -18,7 +18,7 @@ async function login(req, res) {
       { expiresIn: '8h' }
     );
 
-    res.json({ success: true, data: { token, role: user.role, username: user.username }, message: 'Login successful' });
+    res.json({ success: true, data: { token, role: user.role, username: user.username, name: user.name }, message: 'Login successful' });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
   }

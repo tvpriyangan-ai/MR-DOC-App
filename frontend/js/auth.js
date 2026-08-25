@@ -14,6 +14,7 @@ if (loginForm) {
       localStorage.setItem('token', data.token);
       localStorage.setItem('role', data.role);
       localStorage.setItem('username', data.username);
+      localStorage.setItem('name', data.name || data.username);
       window.location.href = 'dashboard.html';
     } catch (err) {
       errorEl.textContent = err.message;
@@ -33,7 +34,7 @@ if (logoutBtn) {
 // Show username + hide admin-only elements for guests
 const userLabel = document.getElementById('userLabel');
 if (userLabel) {
-  userLabel.textContent = localStorage.getItem('username') || '';
+  userLabel.textContent = localStorage.getItem('name') || localStorage.getItem('username') || '';
 }
 
 const role = localStorage.getItem('role');

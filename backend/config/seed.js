@@ -9,17 +9,13 @@ const Feature = require('../models/Feature');
 async function seed() {
   await mongoose.connect(process.env.MONGO_URI);
 
-  // Create users only if they don't already exist
+  // Create the Admin account only if it doesn't already exist.
+  // Staff (guest-role) accounts are created afterwards from the app's
+  // "Manage Users" screen, so each person gets their own login.
   const existingAdmin = await User.findOne({ username: 'Admin' });
   if (!existingAdmin) {
-    await User.create({ username: 'Admin', password: 'AdminMR2026', role: 'admin' });
+    await User.create({ name: 'Admin', username: 'Admin', password: 'AdminMR2026', role: 'admin' });
     console.log('Admin user created');
-  }
-
-  const existingGuest = await User.findOne({ username: 'Guest' });
-  if (!existingGuest) {
-    await User.create({ username: 'Guest', password: 'Guest123', role: 'guest' });
-    console.log('Guest user created');
   }
 
   // Default feature flags, all ON by default

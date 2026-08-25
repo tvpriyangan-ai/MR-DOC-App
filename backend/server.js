@@ -19,6 +19,7 @@ app.use('/api/invoices', require('./routes/invoiceRoutes'));
 app.use('/api/salaries', require('./routes/salaryRoutes'));
 app.use('/api/shop-value', require('./routes/shopValueRoutes'));
 app.use('/api/features', require('./routes/featureRoutes'));
+app.use('/api/users', require('./routes/userRoutes'));
 
 // Serve the frontend static files (so Render can host both from one service)
 app.use(express.static(path.join(__dirname, '..', 'frontend')));
