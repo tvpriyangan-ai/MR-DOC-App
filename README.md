@@ -46,6 +46,5 @@
 7. Once deployed, Express serves the frontend automatically (see `server.js`), so one Render service handles everything.
 
 ## Still to add later
-- Shop logo: replace `frontend/assets/logo.png` with your real logo (same filename)
 - Invoice edit/delete if needed
 - Password hashing (currently plain-text match, fine for a small private tool but upgrade later with bcrypt)

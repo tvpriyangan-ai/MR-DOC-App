@@ -18,7 +18,7 @@ body {
   text-align: center;
 }
 
-.login-logo { max-width: 100px; margin-bottom: 10px; }
+.login-logo { max-width: 100%; margin-bottom: 10px; }
 
 .login-container form { display: flex; flex-direction: column; text-align: left; }
 
@@ -206,7 +206,7 @@ body {
   margin-bottom: 14px;
 }
 
-.invoice-header img { max-width: 70px; }
+.invoice-header img { max-width: 220px; }
 
 .invoice-print-totals {
   text-align: right;
