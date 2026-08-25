@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MR DOC - Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="app-header">
+    <h2>MR DOC</h2>
+    <nav>
+      <a href="invoice.html">Invoice</a>
+      <button id="salaryBtn" class="admin-only">Salary</button>
+      <button id="shopValueBtn" class="admin-only">Shop Value</button>
+      <span id="userLabel"></span>
+      <button id="logoutBtn">Logout</button>
+    </nav>
+  </header>
+
+  <main class="dashboard-grid">
+
+    <!-- LEFT SIDEBAR: Purchase -->
+    <section class="sidebar" id="purchaseSection">
+      <h3>Purchase</h3>
+      <form id="purchaseForm" class="entry-form">
+        <input type="text" id="purchaseName" placeholder="Name" required>
+        <input type="date" id="purchaseDate" required>
+        <input type="number" id="purchaseAmount" placeholder="Amount" required>
+        <button type="submit">Add</button>
+      </form>
+      <ul id="purchaseList" class="entry-list"></ul>
+    </section>
+
+    <!-- RIGHT SIDEBAR: Loans / Shop Rent / CB Bill -->
+    <section class="sidebar" id="ledgerSection">
+      <h3>Loans / Shop Rent / CB Bill</h3>
+      <form id="ledgerForm" class="entry-form">
+        <select id="ledgerType" required>
+          <option value="loan">Loan</option>
+          <option value="shop_rent">Shop Rent</option>
+          <option value="cb_bill">CB Bill</option>
+        </select>
+        <input type="text" id="ledgerName" placeholder="Name" required>
+        <input type="date" id="ledgerDate" required>
+        <input type="number" id="ledgerAmount" placeholder="Amount" required>
+        <label>Deadline</label>
+        <input type="date" id="ledgerDeadline">
+        <button type="submit">Add</button>
+      </form>
+      <ul id="ledgerList" class="entry-list"></ul>
+    </section>
+
+  </main>
+
+  <!-- Admin-only modals (hidden by default, shown via JS) -->
+  <div id="salaryModal" class="modal hidden admin-only">
+    <div class="modal-box">
+      <h3>Salary</h3>
+      <form id="salaryForm" class="entry-form">
+        <input type="text" id="salaryMemberName" placeholder="Member name" required>
+        <input type="date" id="salaryDate" required>
+        <input type="number" id="salaryAmount" placeholder="Amount" required>
+        <button type="submit">Add</button>
+      </form>
+      <ul id="salaryList" class="entry-list"></ul>
+      <button class="close-modal" data-target="salaryModal">Close</button>
+    </div>
+  </div>
+
+  <div id="shopValueModal" class="modal hidden admin-only">
+    <div class="modal-box">
+      <h3>Shop Total Value</h3>
+      <form id="shopValueForm" class="entry-form">
+        <input type="text" id="categoryName" placeholder="Category name" required>
+        <input type="number" id="categoryCount" placeholder="Count" required>
+        <input type="number" id="categoryValue" placeholder="Value per unit" required>
+        <button type="submit">Add</button>
+      </form>
+      <ul id="shopValueList" class="entry-list"></ul>
+      <button class="close-modal" data-target="shopValueModal">Close</button>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/purchase.js"></script>
+  <script src="js/ledger.js"></script>
+  <script src="js/salary.js"></script>
+  <script src="js/shopValue.js"></script>
+</body>
+</html>

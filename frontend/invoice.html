@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MR DOC - Invoice</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <h2>MR DOC</h2>
+    <nav>
+      <a href="dashboard.html">Back to Dashboard</a>
+      <button id="logoutBtn">Logout</button>
+    </nav>
+  </header>
+
+  <main class="invoice-page">
+
+    <form id="invoiceForm">
+      <div class="invoice-customer-fields">
+        <input type="text" id="customerName" placeholder="Customer name" required>
+        <input type="text" id="mobileNumber" placeholder="Mobile number" required>
+        <input type="date" id="invoiceDate" required>
+      </div>
+
+      <table id="itemsTable">
+        <thead>
+          <tr>
+            <th>Material</th>
+            <th>Price</th>
+            <th>Count</th>
+            <th>Line total</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="itemsBody">
+          <!-- rows added by JS -->
+        </tbody>
+      </table>
+
+      <button type="button" id="addItemBtn">+ Add item</button>
+
+      <div class="invoice-totals">
+        <label>Discount: <input type="number" id="discount" value="0"></label>
+        <p>Total: <span id="totalDisplay">0</span></p>
+        <p>Final Amount: <span id="finalDisplay">0</span></p>
+      </div>
+
+      <button type="submit">Save Invoice</button>
+    </form>
+
+    <!-- This is the printable invoice, styled separately for the JPEG download -->
+    <div id="invoicePrintArea" class="invoice-print hidden">
+      <div class="invoice-header">
+        <img src="assets/logo.png" alt="Shop Logo" onerror="this.style.display='none'">
+        <div>
+          <h2>Your Shop Name</h2>
+          <p>Shop address line, phone number</p>
+        </div>
+      </div>
+      <div class="invoice-customer-print">
+        <p>Customer: <span id="printCustomerName"></span></p>
+        <p>Mobile: <span id="printMobile"></span></p>
+        <p>Date: <span id="printDate"></span></p>
+      </div>
+      <table id="printItemsTable">
+        <thead><tr><th>Material</th><th>Price</th><th>Count</th><th>Line total</th></tr></thead>
+        <tbody id="printItemsBody"></tbody>
+      </table>
+      <div class="invoice-print-totals">
+        <p>Total: <span id="printTotal"></span></p>
+        <p>Discount: <span id="printDiscount"></span></p>
+        <p><strong>Final Amount: <span id="printFinal"></span></strong></p>
+      </div>
+    </div>
+
+    <button id="downloadJpegBtn" class="hidden">Download as JPEG</button>
+
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/invoice.js"></script>
+</body>
+</html>

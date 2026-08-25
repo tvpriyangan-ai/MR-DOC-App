@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MR DOC - Login</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="login-container">
+    <img src="assets/logo.png" alt="Shop Logo" class="login-logo" onerror="this.style.display='none'">
+    <h1>MR DOC</h1>
+    <form id="loginForm">
+      <label for="username">Username</label>
+      <input type="text" id="username" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" required>
+
+      <p id="loginError" class="error-text"></p>
+
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
