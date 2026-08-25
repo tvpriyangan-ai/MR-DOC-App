@@ -1,4 +1,5 @@
 const Invoice = require('../models/Invoice');
+const logActivity = require('../utils/activityLogger');
 
 async function getAll(req, res) {
   try {
@@ -34,6 +35,8 @@ async function create(req, res) {
       totalAmount,
       finalAmount
     });
+
+    logActivity(req.user.username, 'invoice_create', `Created invoice for "${invoice.customerName}" - ${invoice.finalAmount}`);
 
     res.json({ success: true, data: invoice, message: 'Invoice created' });
   } catch (err) {

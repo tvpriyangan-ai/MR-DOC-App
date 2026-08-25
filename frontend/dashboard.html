@@ -14,6 +14,7 @@
       <button id="salaryBtn" class="admin-only">Salary</button>
       <button id="shopValueBtn" class="admin-only">Shop Value</button>
       <button id="usersBtn" class="admin-only">Manage Users</button>
+      <button id="historyBtn" class="admin-only">History</button>
       <span id="userLabel"></span>
       <button id="logoutBtn">Logout</button>
     </nav>
@@ -101,6 +102,14 @@
     </div>
   </div>
 
+  <div id="historyModal" class="modal hidden admin-only">
+    <div class="modal-box">
+      <h3>Activity History</h3>
+      <ul id="historyList" class="entry-list history-list"></ul>
+      <button class="close-modal" data-target="historyModal">Close</button>
+    </div>
+  </div>
+
   <script src="js/api.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/purchase.js"></script>
@@ -108,5 +117,6 @@
   <script src="js/salary.js"></script>
   <script src="js/shopValue.js"></script>
   <script src="js/users.js"></script>
+  <script src="js/history.js"></script>
 </body>
 </html>

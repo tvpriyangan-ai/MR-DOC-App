@@ -22,7 +22,7 @@ async function loadUsers() {
       <span>${u.name} - ${u.username} (${u.role})</span>
       <span>
         <button onclick="editUser('${u._id}')">Edit</button>
-        ${u.username === myUsername ? '' : `<button onclick="deleteUser('${u._id}')">Delete</button>`}
+        ${u.username === myUsername ? '' : `<button class="btn-red" onclick="deleteUser('${u._id}')">Delete</button>`}
       </span>`;
     usersList.appendChild(li);
   });

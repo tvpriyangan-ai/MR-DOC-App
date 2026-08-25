@@ -12,7 +12,7 @@ async function loadLedger() {
     li.innerHTML = `
       <span>[${entry.type}] ${entry.name} - ${entry.amount} (deadline: ${deadline})</span>
       <span>
-        <button onclick="deleteLedgerEntry('${entry._id}')">Delete</button>
+        <button class="btn-red" onclick="deleteLedgerEntry('${entry._id}')">Delete</button>
       </span>`;
     ledgerList.appendChild(li);
   });

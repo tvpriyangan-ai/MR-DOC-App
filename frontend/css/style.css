@@ -1,69 +1,141 @@
+/* ==========================================
+   MR DOC - Web Version
+   Palette matched to DC Stock Manager:
+   BG #1E1E1E | SIDEBAR #111111 | CARD #2B2B2B
+   GREEN #00E676 | BLUE #2196F3 | RED #F44336
+   ORANGE #FF9800 | PURPLE #7C4DFF | CYAN #4FC3F7
+   ========================================== */
+
+:root {
+  --bg: #1E1E1E;
+  --sidebar: #111111;
+  --card: #2B2B2B;
+  --white: #FFFFFF;
+  --green: #00E676;
+  --green-dark: #00A86B;
+  --blue: #2196F3;
+  --red: #F44336;
+  --red-dark: #D9534F;
+  --orange: #FF9800;
+  --yellow: #FFC107;
+  --purple: #7C4DFF;
+  --cyan: #4FC3F7;
+  --gray: #BDBDBD;
+  --border: #424242;
+}
+
 * { box-sizing: border-box; }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Segoe UI", Arial, sans-serif;
   margin: 0;
-  background: #f4f4f4;
-  color: #222;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--white);
 }
 
+button { font-family: inherit; }
+
 /* ---------- Login page ---------- */
+body.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0f0f0f radial-gradient(circle at 50% 20%, #232323 0%, #0f0f0f 70%);
+  padding: 20px;
+}
+
 .login-container {
   max-width: 360px;
-  margin: 80px auto;
-  background: #fff;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  width: 100%;
+  margin: 0 auto;
+  background: #202020;
+  padding: 26px 30px 22px;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
   text-align: center;
 }
 
-.login-logo { max-width: 100%; margin-bottom: 10px; }
+.login-logo {
+  max-width: 100%;
+  margin-bottom: 14px;
+  border-radius: 8px;
+}
+
+.login-container h1 {
+  margin: 6px 0 18px;
+  font-size: 22px;
+  letter-spacing: 0.5px;
+}
 
 .login-container form { display: flex; flex-direction: column; text-align: left; }
 
-.login-container label { margin-top: 10px; font-size: 14px; }
+.login-container label { margin-top: 14px; font-size: 13px; color: #DDDDDD; }
 
 .login-container input {
-  padding: 8px;
-  margin-top: 4px;
-  border: 1px solid #ccc;
+  padding: 10px 12px;
+  margin-top: 5px;
+  border: none;
   border-radius: 4px;
+  font-size: 15px;
+  background: #fff;
+  color: #111;
 }
 
 .login-container button {
-  margin-top: 20px;
-  padding: 10px;
-  background: #2c3e50;
+  margin-top: 22px;
+  padding: 11px;
+  background: var(--green-dark);
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 14px;
   cursor: pointer;
+  transition: filter 0.15s ease;
 }
+.login-container button:active { filter: brightness(0.85); }
 
-.error-text { color: #c0392b; font-size: 13px; min-height: 18px; }
+.error-text { color: var(--red); font-size: 13px; min-height: 18px; margin-top: 8px; }
 
 /* ---------- Header ---------- */
 .app-header {
-  background: #2c3e50;
+  background: var(--card);
   color: #fff;
-  padding: 12px 20px;
+  padding: 0 20px;
+  height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
+
+.app-header h2 { font-size: 18px; margin: 0; letter-spacing: 0.3px; }
+
+.app-header nav { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 
 .app-header nav a, .app-header nav button {
   color: #fff;
-  background: transparent;
-  border: 1px solid #fff;
-  padding: 6px 12px;
-  margin-left: 8px;
-  border-radius: 4px;
+  background: #3a3a3a;
+  border: 1px solid var(--border);
+  padding: 7px 14px;
+  border-radius: 5px;
   cursor: pointer;
   text-decoration: none;
   font-size: 13px;
+  font-weight: bold;
+  transition: background 0.15s ease;
 }
+
+.app-header nav a:hover, .app-header nav button:hover { background: #474747; }
+
+#logoutBtn { background: var(--red-dark); border-color: var(--red-dark); }
+#logoutBtn:hover { background: #c9302c; }
+
+#userLabel { color: var(--cyan); font-weight: bold; font-size: 13px; margin: 0 4px; }
 
 /* ---------- Dashboard grid ---------- */
 .dashboard-grid {
@@ -74,11 +146,13 @@ body {
 }
 
 .sidebar {
-  background: #fff;
-  padding: 16px;
+  background: var(--card);
+  padding: 18px;
   border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  border: 1px solid var(--border);
 }
+
+.sidebar h3 { margin-top: 0; color: var(--cyan); font-size: 16px; }
 
 .entry-form {
   display: flex;
@@ -89,19 +163,25 @@ body {
 
 .entry-form input, .entry-form select {
   flex: 1 1 120px;
-  padding: 6px;
-  border: 1px solid #ccc;
+  padding: 8px 10px;
+  border: none;
   border-radius: 4px;
+  background: #fff;
+  color: #111;
+  font-size: 14px;
 }
 
 .entry-form button {
-  padding: 6px 14px;
-  background: #27ae60;
+  padding: 8px 16px;
+  background: var(--green-dark);
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
+  font-weight: bold;
   cursor: pointer;
+  transition: filter 0.15s ease;
 }
+.entry-form button:active { filter: brightness(0.85); }
 
 .entry-list { list-style: none; padding: 0; margin: 0; }
 
@@ -109,92 +189,186 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 4px;
-  border-bottom: 1px solid #eee;
+  padding: 10px 6px;
+  border-bottom: 1px solid var(--border);
   font-size: 14px;
+  gap: 8px;
 }
+.entry-list li:hover { background: rgba(255,255,255,0.03); }
+.entry-list li:last-child { border-bottom: none; }
 
 .entry-list button {
   border: none;
-  background: none;
+  border-radius: 4px;
   cursor: pointer;
-  color: #2980b9;
-  font-size: 13px;
+  color: #fff;
+  background: var(--blue);
+  font-size: 12px;
+  font-weight: bold;
+  padding: 5px 10px;
   margin-left: 6px;
+  transition: filter 0.15s ease;
 }
+.entry-list button.btn-red { background: var(--red-dark); }
+.entry-list button:active { filter: brightness(0.85); }
 
-/* ---------- Modal (Salary / Shop Value) ---------- */
+.empty-state { text-align: center; color: var(--gray); padding: 20px 10px; justify-content: center; }
+
+/* Activity History list */
+.history-list li { flex-wrap: wrap; }
+.history-time { color: var(--gray); font-size: 12px; white-space: nowrap; }
+
+/* ---------- Modal (Salary / Shop Value / Manage Users / History) ---------- */
 .modal {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.6);
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 50;
 }
 
 .modal.hidden { display: none; }
 
 .modal-box {
-  background: #fff;
-  padding: 20px;
+  background: var(--card);
+  padding: 22px;
   border-radius: 8px;
   width: 90%;
   max-width: 500px;
   max-height: 80vh;
   overflow-y: auto;
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
 }
+
+.modal-box h3 { margin-top: 0; color: var(--cyan); }
 
 .close-modal {
   margin-top: 14px;
-  padding: 6px 14px;
+  padding: 8px 16px;
   cursor: pointer;
+  background: #555;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
 }
+.close-modal:hover { background: #666; }
 
-/* ---------- Invoice page ---------- */
+/* ---------- Invoice page (edit form) ---------- */
 .invoice-page {
   max-width: 800px;
   margin: 20px auto;
-  background: #fff;
-  padding: 20px;
+  background: var(--card);
+  padding: 24px;
   border-radius: 8px;
+  border: 1px solid var(--border);
 }
 
 .invoice-customer-fields {
   display: flex;
   gap: 10px;
   margin-bottom: 16px;
+  flex-wrap: wrap;
 }
 
 .invoice-customer-fields input {
   flex: 1;
-  padding: 8px;
-  border: 1px solid #ccc;
+  min-width: 150px;
+  padding: 9px 10px;
+  border: none;
   border-radius: 4px;
+  background: #fff;
+  color: #111;
 }
 
-#itemsTable, #printItemsTable {
+#itemsTable {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 12px;
 }
 
-#itemsTable th, #itemsTable td,
-#printItemsTable th, #printItemsTable td {
-  border: 1px solid #ddd;
-  padding: 6px 8px;
+#itemsTable th, #itemsTable td {
+  border-bottom: 1px solid var(--border);
+  padding: 8px;
   text-align: left;
   font-size: 14px;
 }
 
-.invoice-totals { margin-top: 10px; }
+#itemsTable th { color: var(--cyan); }
 
-/* ---------- Printable invoice (for JPEG export) ---------- */
+#itemsTable input, #itemsTable select {
+  width: 100%;
+  padding: 6px 8px;
+  border: none;
+  border-radius: 4px;
+  background: #fff;
+  color: #111;
+}
+
+#addItemBtn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #fff;
+  background: var(--blue);
+  margin-top: 6px;
+}
+
+.remove-item {
+  background: var(--red-dark);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 4px 9px;
+}
+
+.invoice-totals { margin-top: 16px; font-size: 15px; }
+.invoice-totals label { color: var(--gray); }
+.invoice-totals input {
+  padding: 6px 8px;
+  border: none;
+  border-radius: 4px;
+  background: #fff;
+  color: #111;
+  width: 90px;
+}
+
+#invoiceForm > button[type="submit"] {
+  padding: 9px 18px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #fff;
+  background: var(--green-dark);
+  margin-top: 10px;
+}
+
+#downloadJpegBtn {
+  padding: 9px 18px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #fff;
+  background: var(--purple);
+  margin-top: 16px;
+}
+
+/* ---------- Printable invoice (kept light on purpose - this is what
+   gets exported as a JPEG and handed to the customer) ---------- */
 .invoice-print {
   border: 2px solid #2c3e50;
   padding: 20px;
   margin-top: 20px;
   background: #fff;
+  color: #222;
 }
 
 .invoice-header {
@@ -208,9 +382,19 @@ body {
 
 .invoice-header img { max-width: 220px; }
 
-.invoice-print-totals {
-  text-align: right;
-  margin-top: 10px;
+#printItemsTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 12px;
 }
+
+#printItemsTable th, #printItemsTable td {
+  border: 1px solid #ddd;
+  padding: 6px 8px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.invoice-print-totals { text-align: right; margin-top: 10px; }
 
 .hidden { display: none; }

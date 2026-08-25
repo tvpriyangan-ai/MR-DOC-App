@@ -11,7 +11,7 @@ async function loadPurchases() {
     li.innerHTML = `
       <span>${p.name} - ${p.amount} (${new Date(p.date).toLocaleDateString()})</span>
       <span>
-        <button onclick="deletePurchase('${p._id}')">Delete</button>
+        <button class="btn-red" onclick="deletePurchase('${p._id}')">Delete</button>
       </span>`;
     purchaseList.appendChild(li);
   });

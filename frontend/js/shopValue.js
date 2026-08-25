@@ -19,7 +19,7 @@ async function loadShopValue() {
     const li = document.createElement('li');
     li.innerHTML = `
       <span>${item.categoryName} - count: ${item.count}, total: ${item.totalAmount}</span>
-      <span><button onclick="deleteShopValue('${item._id}')">Delete</button></span>`;
+      <span><button class="btn-red" onclick="deleteShopValue('${item._id}')">Delete</button></span>`;
     shopValueList.appendChild(li);
   });
 }

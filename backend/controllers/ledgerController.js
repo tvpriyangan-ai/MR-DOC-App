@@ -1,4 +1,5 @@
 const LedgerEntry = require('../models/LedgerEntry');
+const logActivity = require('../utils/activityLogger');
 
 // GET /api/ledger?type=loan  (type can be loan | shop_rent | cb_bill)
 async function getAll(req, res) {
@@ -14,6 +15,7 @@ async function getAll(req, res) {
 async function create(req, res) {
   try {
     const entry = await LedgerEntry.create(req.body);
+    logActivity(req.user.username, 'ledger_add', `Added ${entry.type} entry "${entry.name}" - ${entry.amount}`);
     res.json({ success: true, data: entry, message: 'Entry added' });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
@@ -23,6 +25,7 @@ async function create(req, res) {
 async function update(req, res) {
   try {
     const entry = await LedgerEntry.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    logActivity(req.user.username, 'ledger_update', `Updated ${entry.type} entry "${entry.name}" - ${entry.amount}`);
     res.json({ success: true, data: entry, message: 'Entry updated' });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
@@ -31,7 +34,8 @@ async function update(req, res) {
 
 async function remove(req, res) {
   try {
-    await LedgerEntry.findByIdAndDelete(req.params.id);
+    const entry = await LedgerEntry.findByIdAndDelete(req.params.id);
+    if (entry) logActivity(req.user.username, 'ledger_delete', `Deleted ${entry.type} entry "${entry.name}" - ${entry.amount}`);
     res.json({ success: true, message: 'Entry deleted' });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });

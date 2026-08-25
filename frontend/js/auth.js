@@ -25,7 +25,8 @@ if (loginForm) {
 // Runs on every page that has a logout button
 const logoutBtn = document.getElementById('logoutBtn');
 if (logoutBtn) {
-  logoutBtn.addEventListener('click', () => {
+  logoutBtn.addEventListener('click', async () => {
+    try { await api.post('/auth/logout'); } catch (err) { /* still log out locally even if this fails */ }
     localStorage.clear();
     window.location.href = 'index.html';
   });
