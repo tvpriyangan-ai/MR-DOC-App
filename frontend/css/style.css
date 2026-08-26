@@ -393,7 +393,7 @@ body.dashboard-page {
 
 /* ---------- Invoice page (edit form) ---------- */
 .invoice-page {
-  max-width: 800px;
+  max-width: 860px;
   margin: 20px auto;
   background: var(--card);
   padding: 24px;
@@ -513,11 +513,15 @@ body.dashboard-page {
   font-family: 'Jost', Arial, sans-serif;
   color: var(--inv-ink);
   background: var(--inv-ivory);
-  max-width: 820px;
+  width: 794px;
+  max-width: 100%;
+  min-height: 1123px;
   margin: 20px auto 0;
   border: 1px solid rgba(0, 0, 0, 0.06);
   overflow: hidden;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Subtle dotted watermark pattern across the invoice background.
@@ -694,7 +698,8 @@ body.dashboard-page {
 }
 
 .ip-footer {
-  margin-top: 8px;
+  margin-top: auto;
+  padding-top: 18px;
   background: var(--inv-black);
   color: var(--inv-ivory);
   padding: 18px 32px;
