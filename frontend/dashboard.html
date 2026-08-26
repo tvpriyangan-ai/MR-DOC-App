@@ -22,7 +22,7 @@
 
   <main class="dashboard-grid">
 
-    <!-- LEFT SIDEBAR: Purchase -->
+    <!-- CONTAINER 1: Purchase -->
     <section class="sidebar" id="purchaseSection">
       <h3>Purchase</h3>
       <form id="purchaseForm" class="entry-form">
@@ -34,15 +34,25 @@
       <ul id="purchaseList" class="entry-list"></ul>
     </section>
 
-    <!-- RIGHT SIDEBAR: Loan / Rent / CB / Salary / Others - each its own row -->
-    <section class="sidebar" id="ledgerSection">
-      <h3>Loan / Rent / CB / Salary / Others</h3>
-
+    <!-- CONTAINER 2: Loans -->
+    <section class="sidebar" id="loanSection">
+      <h3>Loans</h3>
       <div class="ledger-row" data-ledger-type="loan" data-ledger-label="Loan"></div>
-      <div class="ledger-row" data-ledger-type="shop_rent" data-ledger-label="Shop Rent"></div>
-      <div class="ledger-row" data-ledger-type="cb_bill" data-ledger-label="CB Bill"></div>
+    </section>
 
-      <div class="ledger-row admin-only" id="salaryRow">
+    <!-- CONTAINER 3: CB Bill & Shop Rent -->
+    <section class="sidebar" id="cbRentSection">
+      <h3>CB & Rent</h3>
+      <div class="ledger-row" data-ledger-type="cb_bill" data-ledger-label="CB Bill"></div>
+      <div class="ledger-row" data-ledger-type="shop_rent" data-ledger-label="Shop Rent"></div>
+    </section>
+
+    <!-- CONTAINER 4: Food & Salary (admin only) -->
+    <section class="sidebar admin-only" id="foodSalarySection">
+      <h3>Food & Salary</h3>
+      <div class="ledger-row" data-ledger-type="food" data-ledger-label="Food"></div>
+
+      <div class="ledger-row" id="salaryRow">
         <h4>Salary</h4>
         <form id="salaryForm" class="entry-form">
           <input type="text" id="salaryMemberName" placeholder="Member name" required>
@@ -52,8 +62,6 @@
         </form>
         <ul id="salaryList" class="entry-list"></ul>
       </div>
-
-      <div class="ledger-row" data-ledger-type="others" data-ledger-label="Others"></div>
     </section>
 
   </main>

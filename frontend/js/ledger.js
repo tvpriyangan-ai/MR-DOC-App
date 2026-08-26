@@ -1,5 +1,5 @@
-// Loan / Shop Rent / CB Bill / Others: each is its own row (own form + own list)
-// in the right sidebar, driven by the ledger type it's tagged with in the HTML.
+// Loan / Shop Rent / CB Bill / Food: each is its own row (own form + own list),
+// driven by the ledger type it's tagged with in the HTML. Food is admin-only.
 
 const ledgerReloaders = {};
 
@@ -57,4 +57,7 @@ async function deleteLedgerEntry(id, type) {
   if (ledgerReloaders[type]) ledgerReloaders[type]();
 }
 
-document.querySelectorAll('.ledger-row[data-ledger-type]').forEach(initLedgerRow);
+document.querySelectorAll('.ledger-row[data-ledger-type]').forEach(row => {
+  if (row.dataset.ledgerType === 'food' && localStorage.getItem('role') !== 'admin') return;
+  initLedgerRow(row);
+});
