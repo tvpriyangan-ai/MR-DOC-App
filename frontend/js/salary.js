@@ -14,6 +14,7 @@ async function loadSalaries() {
     li.innerHTML = `<span>${s.memberName} - <span class="entry-amount">${s.salaryAmount}</span> (${new Date(s.date).toLocaleDateString()})</span>`;
     salaryList.appendChild(li);
   });
+  updateContainerTotal(document.getElementById('foodSalarySection'));
 }
 
 function openSalaryForm() {

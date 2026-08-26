@@ -60,6 +60,7 @@ function initLedgerRow(row) {
         <button class="btn-red" onclick="deleteLedgerEntry('${entry._id}', '${type}')">Delete</button>`;
       list.appendChild(li);
     });
+    updateContainerTotal(row.closest('.sidebar'));
   }
 
   form.addEventListener('submit', async (e) => {

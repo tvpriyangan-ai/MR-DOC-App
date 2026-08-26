@@ -30,7 +30,10 @@
 
     <!-- CONTAINER 1: Purchase -->
     <section class="sidebar accent-gold" id="purchaseSection">
-      <h3><span class="card-icon">&#127991;&#65039;</span> Purchase</h3>
+      <h3>
+        <span class="card-title-group"><span class="card-icon">&#127991;&#65039;</span> Purchase</span>
+        <span class="container-total">0</span>
+      </h3>
 
       <ul id="purchaseList" class="entry-list"></ul>
       <button type="button" class="add-toggle-btn" id="purchaseAddToggle">+ Add Purchase</button>
@@ -49,20 +52,29 @@
 
     <!-- CONTAINER 2: Loans -->
     <section class="sidebar accent-rose" id="loanSection">
-      <h3><span class="card-icon">&#129689;</span> Loans</h3>
+      <h3>
+        <span class="card-title-group"><span class="card-icon">&#129689;</span> Loans</span>
+        <span class="container-total">0</span>
+      </h3>
       <div class="ledger-row" data-ledger-type="loan" data-ledger-label="Loan"></div>
     </section>
 
     <!-- CONTAINER 3: CB Bill & Shop Rent -->
     <section class="sidebar accent-teal" id="cbRentSection">
-      <h3><span class="card-icon">&#129534;</span> CB & Rent</h3>
+      <h3>
+        <span class="card-title-group"><span class="card-icon">&#129534;</span> CB & Rent</span>
+        <span class="container-total">0</span>
+      </h3>
       <div class="ledger-row" data-ledger-type="cb_bill" data-ledger-label="CB Bill"></div>
       <div class="ledger-row" data-ledger-type="shop_rent" data-ledger-label="Shop Rent"></div>
     </section>
 
     <!-- CONTAINER 4: Food & Salary (admin only) -->
     <section class="sidebar admin-only accent-amethyst" id="foodSalarySection">
-      <h3><span class="card-icon">&#128081;</span> Food & Salary</h3>
+      <h3>
+        <span class="card-title-group"><span class="card-icon">&#128081;</span> Food & Salary</span>
+        <span class="container-total">0</span>
+      </h3>
       <div class="ledger-row" data-ledger-type="food" data-ledger-label="Food"></div>
 
       <div class="ledger-row" id="salaryRow">

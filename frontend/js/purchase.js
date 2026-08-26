@@ -18,6 +18,7 @@ async function loadPurchases() {
       </span>`;
     purchaseList.appendChild(li);
   });
+  updateContainerTotal(document.getElementById('purchaseSection'));
 }
 
 async function deletePurchase(id) {

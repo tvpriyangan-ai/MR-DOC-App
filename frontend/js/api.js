@@ -33,3 +33,17 @@ const api = {
   put: (path, body) => apiRequest('PUT', path, body),
   delete: (path) => apiRequest('DELETE', path)
 };
+
+// Sums every rendered .entry-amount inside a dashboard container and
+// writes it into that container's corner .container-total badge.
+function updateContainerTotal(sectionEl) {
+  if (!sectionEl) return;
+  const totalEl = sectionEl.querySelector('.container-total');
+  if (!totalEl) return;
+
+  let sum = 0;
+  sectionEl.querySelectorAll('.entry-amount').forEach(el => {
+    sum += Number(el.textContent) || 0;
+  });
+  totalEl.textContent = sum.toLocaleString();
+}

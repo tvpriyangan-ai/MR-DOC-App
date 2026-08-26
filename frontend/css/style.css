@@ -191,6 +191,7 @@ body.dashboard-page {
 .sidebar h3 {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 10px;
   margin: 0 0 16px;
   font-family: 'Cormorant Garamond', serif;
@@ -198,6 +199,19 @@ body.dashboard-page {
   font-size: 25px;
   letter-spacing: 0.3px;
   color: var(--card-accent);
+}
+
+.card-title-group { display: flex; align-items: center; gap: 10px; }
+
+.container-total {
+  font-family: 'Jost', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--card-accent);
+  background: var(--card-accent-soft);
+  padding: 4px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
 }
 
 .card-icon {
