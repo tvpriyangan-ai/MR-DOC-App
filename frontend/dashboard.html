@@ -6,8 +6,11 @@
   <title>MR DOC - Dashboard</title>
   <link rel="icon" type="image/jpeg" href="assets/logo.jpeg">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="dashboard-page">
   <header class="app-header">
     <div class="header-left">
       <img src="assets/logo.jpeg" alt="Shop Logo" class="header-logo" onerror="this.style.display='none'">
@@ -26,44 +29,57 @@
   <main class="dashboard-grid">
 
     <!-- CONTAINER 1: Purchase -->
-    <section class="sidebar" id="purchaseSection">
-      <h3>Purchase</h3>
-      <form id="purchaseForm" class="entry-form">
-        <input type="text" id="purchaseName" placeholder="Name" required>
-        <input type="date" id="purchaseDate" required>
-        <input type="number" id="purchaseAmount" placeholder="Amount" required>
-        <button type="submit">Add</button>
-      </form>
+    <section class="sidebar accent-gold" id="purchaseSection">
+      <h3><span class="card-icon">&#127991;&#65039;</span> Purchase</h3>
+
       <ul id="purchaseList" class="entry-list"></ul>
+      <button type="button" class="add-toggle-btn" id="purchaseAddToggle">+ Add Purchase</button>
+      <div class="add-form-collapse" id="purchaseFormWrap">
+        <form id="purchaseForm" class="entry-form">
+          <input type="text" id="purchaseName" placeholder="Name" required>
+          <input type="date" id="purchaseDate" required>
+          <input type="number" id="purchaseAmount" placeholder="Amount" required>
+          <div class="form-actions">
+            <button type="submit" class="btn-save">Save</button>
+            <button type="button" class="btn-cancel" id="purchaseCancelBtn">Cancel</button>
+          </div>
+        </form>
+      </div>
     </section>
 
     <!-- CONTAINER 2: Loans -->
-    <section class="sidebar" id="loanSection">
-      <h3>Loans</h3>
+    <section class="sidebar accent-rose" id="loanSection">
+      <h3><span class="card-icon">&#129689;</span> Loans</h3>
       <div class="ledger-row" data-ledger-type="loan" data-ledger-label="Loan"></div>
     </section>
 
     <!-- CONTAINER 3: CB Bill & Shop Rent -->
-    <section class="sidebar" id="cbRentSection">
-      <h3>CB & Rent</h3>
+    <section class="sidebar accent-teal" id="cbRentSection">
+      <h3><span class="card-icon">&#129534;</span> CB & Rent</h3>
       <div class="ledger-row" data-ledger-type="cb_bill" data-ledger-label="CB Bill"></div>
       <div class="ledger-row" data-ledger-type="shop_rent" data-ledger-label="Shop Rent"></div>
     </section>
 
     <!-- CONTAINER 4: Food & Salary (admin only) -->
-    <section class="sidebar admin-only" id="foodSalarySection">
-      <h3>Food & Salary</h3>
+    <section class="sidebar admin-only accent-amethyst" id="foodSalarySection">
+      <h3><span class="card-icon">&#128081;</span> Food & Salary</h3>
       <div class="ledger-row" data-ledger-type="food" data-ledger-label="Food"></div>
 
       <div class="ledger-row" id="salaryRow">
         <h4>Salary</h4>
-        <form id="salaryForm" class="entry-form">
-          <input type="text" id="salaryMemberName" placeholder="Member name" required>
-          <input type="date" id="salaryDate" required>
-          <input type="number" id="salaryAmount" placeholder="Amount" required>
-          <button type="submit">Add</button>
-        </form>
         <ul id="salaryList" class="entry-list"></ul>
+        <button type="button" class="add-toggle-btn" id="salaryAddToggle">+ Add Salary</button>
+        <div class="add-form-collapse" id="salaryFormWrap">
+          <form id="salaryForm" class="entry-form">
+            <input type="text" id="salaryMemberName" placeholder="Member name" required>
+            <input type="date" id="salaryDate" required>
+            <input type="number" id="salaryAmount" placeholder="Amount" required>
+            <div class="form-actions">
+              <button type="submit" class="btn-save">Save</button>
+              <button type="button" class="btn-cancel" id="salaryCancelBtn">Cancel</button>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
 
