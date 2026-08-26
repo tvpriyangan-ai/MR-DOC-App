@@ -102,9 +102,26 @@
 
   <!-- Admin-only modals (hidden by default, shown via JS) -->
   <div id="salesModal" class="modal hidden admin-only">
-    <div class="modal-box">
+    <div class="modal-box sales-modal-box">
       <button class="close-modal modal-close-x" data-target="salesModal" aria-label="Close">&times;</button>
       <h3>Sales</h3>
+
+      <div class="sales-stats">
+        <div class="sales-stat-box">
+          <span class="sales-stat-label">Total Sales</span>
+          <span class="sales-stat-value" id="salesTotalAll">0</span>
+        </div>
+        <div class="sales-stat-box">
+          <span class="sales-stat-label">This Month</span>
+          <span class="sales-stat-value" id="salesTotalMonth">0</span>
+        </div>
+      </div>
+
+      <div class="sales-chart-wrap">
+        <canvas id="salesChart"></canvas>
+      </div>
+      <p id="salesSelectedInfo" class="sales-selected-info"></p>
+
       <ul id="salesList" class="entry-list"></ul>
     </div>
   </div>
@@ -148,6 +165,7 @@
   <script src="js/purchase.js"></script>
   <script src="js/ledger.js"></script>
   <script src="js/salary.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <script src="js/sales.js"></script>
   <script src="js/users.js"></script>
   <script src="js/history.js"></script>

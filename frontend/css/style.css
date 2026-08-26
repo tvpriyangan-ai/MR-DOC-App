@@ -418,6 +418,56 @@ body.dashboard-page {
 }
 
 #historyModal h3 { padding-right: 40px; }
+#salesModal h3 { padding-right: 40px; }
+
+/* ---------- Sales modal (stats + chart) ---------- */
+.sales-modal-box { max-width: 700px; }
+
+.sales-stats {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.sales-stat-box {
+  flex: 1;
+  min-width: 140px;
+  background: rgba(79, 195, 247, 0.08);
+  border: 1px solid var(--cyan);
+  border-radius: 8px;
+  padding: 12px 14px;
+  text-align: center;
+}
+
+.sales-stat-label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 4px;
+}
+
+.sales-stat-value { display: block; font-size: 20px; font-weight: 700; color: var(--cyan); }
+
+.sales-chart-wrap {
+  height: 240px;
+  background: #191919;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 8px;
+}
+
+.sales-selected-info {
+  text-align: center;
+  font-size: 13px;
+  color: var(--cyan);
+  font-weight: 600;
+  min-height: 18px;
+  margin: 0 0 14px;
+}
 
 /* ---------- Invoice page (edit form) ---------- */
 .invoice-page {
