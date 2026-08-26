@@ -1,4 +1,5 @@
 const Invoice = require('../models/Invoice');
+const Customer = require('../models/Customer');
 const logActivity = require('../utils/activityLogger');
 
 async function getAll(req, res) {
@@ -37,6 +38,17 @@ async function create(req, res) {
     });
 
     logActivity(req.user.username, 'invoice_create', `Created invoice for "${invoice.customerName}" - ${invoice.finalAmount}`);
+
+    // Auto-save/update the customer record, deduped by mobile number
+    try {
+      await Customer.findOneAndUpdate(
+        { mobileNumber },
+        { name: customerName, mobileNumber },
+        { upsert: true, new: true }
+      );
+    } catch (custErr) {
+      console.error('Customer save failed:', custErr.message);
+    }
 
     res.json({ success: true, data: invoice, message: 'Invoice created' });
   } catch (err) {
