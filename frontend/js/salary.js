@@ -1,16 +1,7 @@
-// Salary modal (admin only)
+// Salary row (admin only, inline in the right sidebar - not a modal anymore)
 
-const salaryBtn = document.getElementById('salaryBtn');
-const salaryModal = document.getElementById('salaryModal');
 const salaryForm = document.getElementById('salaryForm');
 const salaryList = document.getElementById('salaryList');
-
-if (salaryBtn) {
-  salaryBtn.addEventListener('click', () => {
-    salaryModal.classList.remove('hidden');
-    loadSalaries();
-  });
-}
 
 async function loadSalaries() {
   const salaries = await api.get('/salaries');
@@ -22,7 +13,7 @@ async function loadSalaries() {
   });
 }
 
-if (salaryForm) {
+if (salaryForm && localStorage.getItem('role') === 'admin') {
   salaryForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const memberName = document.getElementById('salaryMemberName').value;
@@ -33,11 +24,6 @@ if (salaryForm) {
     salaryForm.reset();
     loadSalaries();
   });
-}
 
-// Generic close button for both modals (shared with shopValue.js)
-document.querySelectorAll('.close-modal').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.getElementById(btn.dataset.target).classList.add('hidden');
-  });
-});
+  loadSalaries();
+}

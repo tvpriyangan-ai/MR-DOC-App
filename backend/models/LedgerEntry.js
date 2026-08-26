@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 const ledgerSchema = new mongoose.Schema({
-  type: { type: String, enum: ['loan', 'shop_rent', 'cb_bill'], required: true },
+  type: { type: String, enum: ['loan', 'shop_rent', 'cb_bill', 'others'], required: true },
   name: { type: String, required: true },
   date: { type: Date, required: true },
   amount: { type: Number, required: true },

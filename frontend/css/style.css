@@ -162,6 +162,15 @@ body.login-page {
 
 .sidebar h3 { margin-top: 0; color: var(--cyan); font-size: 16px; }
 
+.ledger-row {
+  padding-top: 14px;
+  margin-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.ledger-row:first-of-type { padding-top: 0; margin-top: 0; border-top: none; }
+
+.ledger-row h4 { margin: 0 0 10px; color: var(--orange); font-size: 14px; }
+
 .entry-form {
   display: flex;
   flex-wrap: wrap;

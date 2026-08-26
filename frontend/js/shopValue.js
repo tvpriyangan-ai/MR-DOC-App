@@ -41,3 +41,10 @@ if (shopValueForm) {
     loadShopValue();
   });
 }
+
+// Generic close button, shared by every modal (Shop Value / Manage Users / History)
+document.querySelectorAll('.close-modal').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.getElementById(btn.dataset.target).classList.add('hidden');
+  });
+});
