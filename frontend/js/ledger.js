@@ -30,8 +30,11 @@ function initLedgerRow(row) {
       const li = document.createElement('li');
       const deadline = entry.deadlineDate ? new Date(entry.deadlineDate).toLocaleDateString() : '-';
       li.innerHTML = `
-        <span>${entry.name} - ${entry.amount} (deadline: ${deadline})</span>
-        <span><button class="btn-red" onclick="deleteLedgerEntry('${entry._id}', '${type}')">Delete</button></span>`;
+        <div class="entry-info">
+          <span class="entry-main">${entry.name} - ${entry.amount}</span>
+          <span class="entry-deadline">Deadline: ${deadline}</span>
+        </div>
+        <button class="btn-red" onclick="deleteLedgerEntry('${entry._id}', '${type}')">Delete</button>`;
       list.appendChild(li);
     });
   }
