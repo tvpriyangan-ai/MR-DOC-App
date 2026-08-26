@@ -115,6 +115,8 @@ body.login-page {
 
 .app-header h2 { font-size: 18px; margin: 0; letter-spacing: 0.3px; }
 
+.header-left { display: flex; align-items: center; gap: 10px; }
+
 .app-header nav { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 
 .app-header nav a, .app-header nav button {
@@ -387,36 +389,203 @@ body.login-page {
 /* ---------- Printable invoice (kept light on purpose - this is what
    gets exported as a JPEG and handed to the customer) ---------- */
 .invoice-print {
-  border: 2px solid #2c3e50;
-  padding: 20px;
-  margin-top: 20px;
-  background: #fff;
-  color: #222;
+  --inv-ink: #1C1A18;
+  --inv-black: #0B0B0C;
+  --inv-gold: #C9A227;
+  --inv-gold-light: #E4C766;
+  --inv-ivory: #FBF7EE;
+  --inv-wine: #7A2E3A;
+  --inv-wine-deep: #5A1F29;
+  --inv-bronze: #B08D57;
+  --inv-line: rgba(28, 26, 24, 0.14);
+
+  font-family: 'Jost', Arial, sans-serif;
+  color: var(--inv-ink);
+  background: var(--inv-ivory);
+  max-width: 820px;
+  margin: 20px auto 0;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  overflow: hidden;
 }
 
-.invoice-header {
-  text-align: center;
-  border-bottom: 2px solid #2c3e50;
-  padding-bottom: 10px;
-  margin-bottom: 14px;
+.ip-banner { line-height: 0; border-bottom: 4px solid var(--inv-gold); }
+.ip-banner img { width: 100%; height: auto; display: block; }
+
+.ip-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 28px 32px 16px;
+  border-bottom: 1px solid var(--inv-line);
 }
 
-.invoice-header img { max-width: 100%; height: auto; }
-
-#printItemsTable {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 12px;
+.ip-title-row h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: 38px;
+  letter-spacing: 3px;
+  margin: 0;
+  color: var(--inv-wine-deep);
+  text-transform: uppercase;
 }
 
-#printItemsTable th, #printItemsTable td {
-  border: 1px solid #ddd;
-  padding: 6px 8px;
+.ip-sub {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  color: var(--inv-bronze);
+  text-transform: uppercase;
+  display: block;
+  margin-top: 4px;
+}
+
+.ip-meta { text-align: right; font-size: 13px; line-height: 1.9; }
+.ip-meta b { color: var(--inv-wine-deep); }
+.ip-inv-no {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--inv-gold);
+  letter-spacing: 1px;
+}
+
+.ip-cust-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding: 22px 32px;
+  background: linear-gradient(180deg, rgba(201, 162, 39, 0.06), transparent);
+}
+
+.ip-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--inv-bronze);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.ip-value { font-size: 15px; font-weight: 500; color: var(--inv-ink); }
+
+.ip-items { padding: 6px 32px 8px; }
+
+#printItemsTable { width: 100%; border-collapse: collapse; }
+
+#printItemsTable thead th {
   text-align: left;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--inv-ivory);
+  background: var(--inv-wine-deep);
+  padding: 10px 12px;
+}
+
+#printItemsTable thead th:last-child, #printItemsTable tbody td:last-child { text-align: right; }
+#printItemsTable thead th:nth-child(3), #printItemsTable tbody td:nth-child(3) { text-align: center; }
+
+#printItemsTable tbody td {
+  padding: 12px;
+  font-size: 13.5px;
+  border-bottom: 1px solid var(--inv-line);
+}
+
+#printItemsTable tbody tr:nth-child(odd) { background: rgba(201, 162, 39, 0.05); }
+
+.ip-material-cell { display: flex; align-items: center; gap: 8px; font-weight: 500; }
+.ip-line-total { font-weight: 600; color: var(--inv-wine-deep); }
+
+.ip-totals-wrap { display: flex; justify-content: flex-end; padding: 18px 32px 6px; }
+.ip-totals { width: 260px; font-size: 13px; }
+
+.ip-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--inv-line);
+}
+
+.ip-discount span:last-child { color: var(--inv-wine); }
+
+.ip-final {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: var(--inv-wine-deep);
+  color: var(--inv-ivory);
+  border: 1px solid var(--inv-gold);
+}
+
+.ip-amt {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--inv-gold-light);
+  letter-spacing: 1px;
+}
+
+.ip-lbl { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; }
+
+.ip-seal-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 22px 32px 8px;
+}
+
+.ip-thanks {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 16px;
+  color: var(--inv-wine-deep);
+}
+
+.ip-seal {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid var(--inv-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--inv-gold);
+  font-weight: 700;
+  font-size: 10px;
+  text-align: center;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  transform: rotate(-8deg);
+  flex-shrink: 0;
+}
+
+.ip-footer {
+  margin-top: 8px;
+  background: var(--inv-black);
+  color: var(--inv-ivory);
+  padding: 18px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-top: 3px solid var(--inv-gold);
+}
+
+.ip-tag {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--inv-gold-light);
   font-size: 14px;
 }
 
-.invoice-print-totals { text-align: right; margin-top: 10px; }
+.ip-contact { font-size: 11.5px; color: #D9D2C2; display: flex; gap: 14px; flex-wrap: wrap; }
 
 .hidden { display: none; }
 
@@ -446,4 +615,12 @@ body.login-page {
   .modal-box { padding: 18px 16px; width: 94%; }
 
   .entry-form label { flex-basis: 100%; margin-top: 2px; }
+
+  .ip-title-row { padding: 20px 18px 12px; }
+  .ip-title-row h1 { font-size: 28px; }
+  .ip-cust-row { grid-template-columns: 1fr; padding: 16px 18px; }
+  .ip-items { padding: 6px 18px 8px; }
+  .ip-totals-wrap { padding: 14px 18px 6px; }
+  .ip-seal-row { padding: 18px 18px 8px; }
+  .ip-footer { padding: 16px 18px; }
 }

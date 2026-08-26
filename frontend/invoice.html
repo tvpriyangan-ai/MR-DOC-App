@@ -6,6 +6,9 @@
   <title>MR DOC - Invoice</title>
   <link rel="icon" type="image/jpeg" href="assets/logo.jpeg">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
@@ -56,23 +59,70 @@
 
     <!-- This is the printable invoice, styled separately for the JPEG download -->
     <div id="invoicePrintArea" class="invoice-print hidden">
-      <div class="invoice-header">
-        <img src="assets/invoice.jpg" alt="Shop Logo" onerror="this.style.display='none'">
+
+      <div class="ip-banner">
+        <img src="assets/invoice.jpg" alt="MR Looks banner" onerror="this.style.display='none'">
       </div>
-      <div class="invoice-customer-print">
-        <p>Customer: <span id="printCustomerName"></span></p>
-        <p>Mobile: <span id="printMobile"></span></p>
-        <p>Date: <span id="printDate"></span></p>
+
+      <div class="ip-title-row">
+        <div>
+          <h1>Invoice</h1>
+          <span class="ip-sub">MR Looks &middot; Trending Outfit</span>
+        </div>
+        <div class="ip-meta">
+          <div class="ip-inv-no" id="printInvoiceNo"></div>
+          <div><b>Date:</b> <span id="printMetaDate"></span></div>
+          <div><b>Served by:</b> <span id="printServedBy"></span></div>
+        </div>
       </div>
-      <table id="printItemsTable">
-        <thead><tr><th>Material</th><th>Price</th><th>Count</th><th>Line total</th></tr></thead>
-        <tbody id="printItemsBody"></tbody>
-      </table>
-      <div class="invoice-print-totals">
-        <p>Total: <span id="printTotal"></span></p>
-        <p>Discount: <span id="printDiscount"></span></p>
-        <p><strong>Final Amount: <span id="printFinal"></span></strong></p>
+
+      <div class="ip-cust-row">
+        <div class="ip-cust-block">
+          <span class="ip-label">Customer</span>
+          <span class="ip-value" id="printCustomerName"></span>
+        </div>
+        <div class="ip-cust-block">
+          <span class="ip-label">Mobile</span>
+          <span class="ip-value" id="printMobile"></span>
+        </div>
+        <div class="ip-cust-block">
+          <span class="ip-label">Purchase Date</span>
+          <span class="ip-value" id="printPurchaseDate"></span>
+        </div>
       </div>
+
+      <div class="ip-items">
+        <table id="printItemsTable">
+          <thead><tr><th>Material</th><th>Price</th><th>Count</th><th>Line Total</th></tr></thead>
+          <tbody id="printItemsBody"></tbody>
+        </table>
+      </div>
+
+      <div class="ip-totals-wrap">
+        <div class="ip-totals">
+          <div class="ip-row"><span>Subtotal</span><span id="printTotal"></span></div>
+          <div class="ip-row ip-discount"><span>Discount</span><span id="printDiscount"></span></div>
+          <div class="ip-final">
+            <span class="ip-lbl">Final Amount</span>
+            <span class="ip-amt" id="printFinal"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ip-seal-row">
+        <div class="ip-thanks">Thank you for shopping with MR Looks.</div>
+        <div class="ip-seal">MR<br>LOOKS</div>
+      </div>
+
+      <footer class="ip-footer">
+        <div class="ip-tag">Look Good. Feel Confident.</div>
+        <div class="ip-contact">
+          <span>Mallavi Town</span>
+          <span>thanusthanus0911@gmail.com</span>
+          <span>0760071014 / 0762296864</span>
+        </div>
+      </footer>
+
     </div>
 
     <button id="downloadJpegBtn" class="hidden">Download as JPEG</button>

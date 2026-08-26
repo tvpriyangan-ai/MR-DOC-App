@@ -10,6 +10,18 @@ const downloadJpegBtn = document.getElementById('downloadJpegBtn');
 
 const MATERIALS = ['T-shirt', 'Shirt', 'Jeans', 'Shorts', 'Other'];
 
+const MATERIAL_ICONS = {
+  'T-shirt': '\u{1F455}',
+  'Shirt': '\u{1F454}',
+  'Jeans': '\u{1F456}',
+  'Shorts': '\u{1FA73}',
+  'Other': '\u{1F4E6}'
+};
+
+function formatMoney(n) {
+  return Number(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
 function addItemRow() {
   const row = document.createElement('tr');
   row.innerHTML = `
@@ -85,21 +97,32 @@ if (invoiceForm) {
 }
 
 function fillPrintArea(invoice) {
+  const dateStr = new Date(invoice.date).toLocaleDateString();
+
+  document.getElementById('printInvoiceNo').textContent = 'No. ' + invoice._id.slice(-6).toUpperCase();
+  document.getElementById('printMetaDate').textContent = dateStr;
+  document.getElementById('printServedBy').textContent = localStorage.getItem('name') || localStorage.getItem('username') || '-';
+
   document.getElementById('printCustomerName').textContent = invoice.customerName;
   document.getElementById('printMobile').textContent = invoice.mobileNumber;
-  document.getElementById('printDate').textContent = new Date(invoice.date).toLocaleDateString();
+  document.getElementById('printPurchaseDate').textContent = dateStr;
 
   const printBody = document.getElementById('printItemsBody');
   printBody.innerHTML = '';
   invoice.items.forEach(item => {
     const tr = document.createElement('tr');
-    tr.innerHTML = `<td>${item.material}</td><td>${item.price}</td><td>${item.count}</td><td>${item.price * item.count}</td>`;
+    const icon = MATERIAL_ICONS[item.material] || MATERIAL_ICONS['Other'];
+    tr.innerHTML = `
+      <td><div class="ip-material-cell">${icon} ${item.material}</div></td>
+      <td>${formatMoney(item.price)}</td>
+      <td>${item.count}</td>
+      <td class="ip-line-total">${formatMoney(item.price * item.count)}</td>`;
     printBody.appendChild(tr);
   });
 
-  document.getElementById('printTotal').textContent = invoice.totalAmount;
-  document.getElementById('printDiscount').textContent = invoice.discount;
-  document.getElementById('printFinal').textContent = invoice.finalAmount;
+  document.getElementById('printTotal').textContent = formatMoney(invoice.totalAmount);
+  document.getElementById('printDiscount').textContent = '– ' + formatMoney(invoice.discount);
+  document.getElementById('printFinal').textContent = 'Rs. ' + formatMoney(invoice.finalAmount);
 }
 
 if (downloadJpegBtn) {
