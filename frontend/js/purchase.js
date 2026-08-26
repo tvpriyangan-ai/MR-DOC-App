@@ -37,12 +37,12 @@ function closePurchaseForm() {
   purchaseForm.reset();
 }
 
-if (purchaseAddToggle) {
+if (purchaseAddToggle && localStorage.getItem('role') === 'admin') {
   purchaseAddToggle.addEventListener('click', openPurchaseForm);
   purchaseCancelBtn.addEventListener('click', closePurchaseForm);
 }
 
-if (purchaseForm) {
+if (purchaseForm && localStorage.getItem('role') === 'admin') {
   purchaseForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const name = document.getElementById('purchaseName').value;
