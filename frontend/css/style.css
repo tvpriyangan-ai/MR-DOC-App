@@ -57,9 +57,9 @@ body.login-page {
 }
 
 .login-logo {
-  max-width: 100%;
+  max-width: 140px;
   margin-bottom: 14px;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .login-container h1 {
@@ -136,6 +136,14 @@ body.login-page {
 #logoutBtn:hover { background: #c9302c; }
 
 #userLabel { color: var(--cyan); font-weight: bold; font-size: 13px; margin: 0 4px; }
+
+.header-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border);
+}
 
 /* ---------- Dashboard grid ---------- */
 .dashboard-grid {
