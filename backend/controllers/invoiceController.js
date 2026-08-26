@@ -1,5 +1,6 @@
 const Invoice = require('../models/Invoice');
 const Customer = require('../models/Customer');
+const DailySales = require('../models/DailySales');
 const logActivity = require('../utils/activityLogger');
 
 async function getAll(req, res) {
@@ -48,6 +49,18 @@ async function create(req, res) {
       );
     } catch (custErr) {
       console.error('Customer save failed:', custErr.message);
+    }
+
+    // Accumulate this invoice's amount into that day's sales total
+    try {
+      const dateKey = invoice.date.toISOString().slice(0, 10);
+      await DailySales.findOneAndUpdate(
+        { date: dateKey },
+        { $inc: { amount: invoice.finalAmount } },
+        { upsert: true, new: true }
+      );
+    } catch (salesErr) {
+      console.error('Daily sales update failed:', salesErr.message);
     }
 
     res.json({ success: true, data: invoice, message: 'Invoice created' });

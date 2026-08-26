@@ -18,7 +18,7 @@
     </div>
     <nav>
       <a href="invoice.html">Invoice</a>
-      <button id="shopValueBtn" class="admin-only">Shop Value</button>
+      <button id="salesBtn" class="admin-only">Sales</button>
       <button id="usersBtn" class="admin-only">Manage Users</button>
       <button id="customerBtn" class="admin-only">Customer</button>
       <button id="historyBtn" class="admin-only">History</button>
@@ -101,17 +101,11 @@
   <p class="credit-footer">Designed by TVP Creations</p>
 
   <!-- Admin-only modals (hidden by default, shown via JS) -->
-  <div id="shopValueModal" class="modal hidden admin-only">
+  <div id="salesModal" class="modal hidden admin-only">
     <div class="modal-box">
-      <h3>Shop Total Value</h3>
-      <form id="shopValueForm" class="entry-form">
-        <input type="text" id="categoryName" placeholder="Category name" required>
-        <input type="number" id="categoryCount" placeholder="Count" required>
-        <input type="number" id="categoryValue" placeholder="Value per unit" required>
-        <button type="submit">Add</button>
-      </form>
-      <ul id="shopValueList" class="entry-list"></ul>
-      <button class="close-modal" data-target="shopValueModal">Close</button>
+      <button class="close-modal modal-close-x" data-target="salesModal" aria-label="Close">&times;</button>
+      <h3>Sales</h3>
+      <ul id="salesList" class="entry-list"></ul>
     </div>
   </div>
 
@@ -154,7 +148,7 @@
   <script src="js/purchase.js"></script>
   <script src="js/ledger.js"></script>
   <script src="js/salary.js"></script>
-  <script src="js/shopValue.js"></script>
+  <script src="js/sales.js"></script>
   <script src="js/users.js"></script>
   <script src="js/history.js"></script>
   <script src="js/customer.js"></script>
