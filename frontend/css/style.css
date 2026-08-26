@@ -305,10 +305,12 @@ body.login-page {
   color: #111;
 }
 
+.table-scroll { overflow-x: auto; margin-bottom: 12px; }
+
 #itemsTable {
   width: 100%;
+  min-width: 480px;
   border-collapse: collapse;
-  margin-bottom: 12px;
 }
 
 #itemsTable th, #itemsTable td {
@@ -417,3 +419,31 @@ body.login-page {
 .invoice-print-totals { text-align: right; margin-top: 10px; }
 
 .hidden { display: none; }
+
+/* ---------- Responsive: tablet and mobile ---------- */
+@media (max-width: 1024px) {
+  /* Show the four dashboard containers one at a time, stacked, instead of 2x2 */
+  .dashboard-grid { grid-template-columns: 1fr; padding: 16px; gap: 16px; }
+}
+
+@media (max-width: 640px) {
+  .app-header {
+    height: auto;
+    position: static;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px 16px;
+  }
+  .app-header nav { width: 100%; }
+  .app-header nav a, .app-header nav button { flex: 1 1 auto; text-align: center; }
+
+  .login-container { padding: 22px 20px 18px; }
+
+  .invoice-page { padding: 18px 14px; }
+  .invoice-customer-fields input { min-width: 100%; }
+
+  .modal-box { padding: 18px 16px; width: 94%; }
+
+  .entry-form label { flex-basis: 100%; margin-top: 2px; }
+}
