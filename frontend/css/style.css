@@ -517,7 +517,23 @@ body.dashboard-page {
   margin: 20px auto 0;
   border: 1px solid rgba(0, 0, 0, 0.06);
   overflow: hidden;
+  position: relative;
 }
+
+/* Subtle dotted watermark pattern across the invoice background.
+   A real element, not a ::before pseudo-element: html2canvas (used for
+   the JPEG export) silently fails to render gradients on pseudo-elements. */
+.ip-pattern {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Ccircle cx='60' cy='80' r='2.5' fill='%237A2E3A'/%3E%3Ccircle cx='340' cy='160' r='2.5' fill='%23C9A227'/%3E%3Ccircle cx='140' cy='340' r='2.5' fill='%237A2E3A'/%3E%3Ccircle cx='280' cy='360' r='2.5' fill='%23C9A227'/%3E%3C/svg%3E");
+  background-size: 400px 400px;
+  z-index: 0;
+}
+
+.invoice-print > *:not(.ip-pattern) { position: relative; z-index: 1; }
 
 .ip-banner { line-height: 0; border-bottom: 4px solid var(--inv-gold); }
 .ip-banner img { width: 100%; height: auto; display: block; }
@@ -606,6 +622,7 @@ body.dashboard-page {
 #printItemsTable tbody tr:nth-child(odd) { background: rgba(201, 162, 39, 0.05); }
 
 .ip-material-cell { display: flex; align-items: center; gap: 8px; font-weight: 500; }
+.ip-material-cell svg { flex-shrink: 0; color: var(--inv-wine); }
 .ip-line-total { font-weight: 600; color: var(--inv-wine-deep); }
 
 .ip-totals-wrap { display: flex; justify-content: flex-end; padding: 18px 32px 6px; }

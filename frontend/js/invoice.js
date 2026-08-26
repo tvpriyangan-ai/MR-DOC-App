@@ -11,11 +11,11 @@ const downloadJpegBtn = document.getElementById('downloadJpegBtn');
 const MATERIALS = ['T-shirt', 'Shirt', 'Jeans', 'Shorts', 'Other'];
 
 const MATERIAL_ICONS = {
-  'T-shirt': '\u{1F455}',
-  'Shirt': '\u{1F454}',
-  'Jeans': '\u{1F456}',
-  'Shorts': '\u{1FA73}',
-  'Other': '\u{1F4E6}'
+  'T-shirt': '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M8 4L4 7l2 3 2-1v11h8V9l2 1 2-3-4-3-2 2h-4L8 4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>',
+  'Shirt': '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 4L6 6 4 9l2 2 2-1v10h8V10l2 1 2-2-2-3-3-2-2 2h-2L9 4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M10 4l2 3 2-3" stroke="currentColor" stroke-width="1.2"/></svg>',
+  'Jeans': '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 3h10l1 8-1 10h-4l-1-8-1 8H7L6 11 7 3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>',
+  'Shorts': '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 4h12l1 6-1 3h-3l-1-4-1 4H9l-1-4-1 4H4l-1-3 3-6Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>',
+  'Other': '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="4" y="6" width="16" height="13" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M4 10h16" stroke="currentColor" stroke-width="1.4"/></svg>'
 };
 
 function formatMoney(n) {
