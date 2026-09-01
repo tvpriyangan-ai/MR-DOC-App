@@ -444,6 +444,7 @@ body.dashboard-page {
 
 .works-table tbody tr:hover { background: rgba(255, 255, 255, 0.03); }
 .works-table input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; }
+.works-table input[type="checkbox"]:disabled { cursor: default; opacity: 0.6; }
 
 /* ---------- Sales modal (stats + chart) ---------- */
 .sales-modal-box { max-width: 700px; }

@@ -1,11 +1,14 @@
-// Works table (admin only, inline dashboard card): work name, date, done
-// tick, worker name, cash-received tick, add + delete.
+// Works table (inline dashboard card): everyone logged in can view the
+// work name, date, done tick, worker name, and cash-received tick - only
+// admin can add, toggle the ticks, or delete.
 
 const worksBody = document.getElementById('worksBody');
 const workForm = document.getElementById('workForm');
 const workAddToggle = document.getElementById('workAddToggle');
 const workFormWrap = document.getElementById('workFormWrap');
 const workCancelBtn = document.getElementById('workCancelBtn');
+
+const isWorksAdmin = localStorage.getItem('role') === 'admin';
 
 function openWorkForm() {
   workFormWrap.classList.add('open');
@@ -27,13 +30,17 @@ async function loadWorks() {
   }
   works.forEach(w => {
     const tr = document.createElement('tr');
+    const disabledAttr = isWorksAdmin ? '' : 'disabled';
+    const doneHandler = isWorksAdmin ? `onchange="toggleWorkField('${w._id}', 'completed', this.checked)"` : '';
+    const cashHandler = isWorksAdmin ? `onchange="toggleWorkField('${w._id}', 'cashReceived', this.checked)"` : '';
+    const deleteCell = isWorksAdmin ? `<button class="btn-red" onclick="deleteWork('${w._id}')">Delete</button>` : '';
     tr.innerHTML = `
       <td>${w.name}</td>
       <td>${new Date(w.date).toLocaleDateString()}</td>
-      <td><input type="checkbox" ${w.completed ? 'checked' : ''} onchange="toggleWorkField('${w._id}', 'completed', this.checked)"></td>
+      <td><input type="checkbox" ${w.completed ? 'checked' : ''} ${disabledAttr} ${doneHandler}></td>
       <td>${w.workerName}</td>
-      <td><input type="checkbox" ${w.cashReceived ? 'checked' : ''} onchange="toggleWorkField('${w._id}', 'cashReceived', this.checked)"></td>
-      <td><button class="btn-red" onclick="deleteWork('${w._id}')">Delete</button></td>`;
+      <td><input type="checkbox" ${w.cashReceived ? 'checked' : ''} ${disabledAttr} ${cashHandler}></td>
+      <td>${deleteCell}</td>`;
     worksBody.appendChild(tr);
   });
 }
@@ -47,7 +54,11 @@ async function deleteWork(id) {
   loadWorks();
 }
 
-if (workForm && localStorage.getItem('role') === 'admin') {
+if (worksBody) {
+  loadWorks();
+}
+
+if (workForm && isWorksAdmin) {
   workAddToggle.addEventListener('click', openWorkForm);
   workCancelBtn.addEventListener('click', closeWorkForm);
 
@@ -61,6 +72,4 @@ if (workForm && localStorage.getItem('role') === 'admin') {
     closeWorkForm();
     loadWorks();
   });
-
-  loadWorks();
 }
