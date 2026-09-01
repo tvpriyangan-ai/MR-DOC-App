@@ -1,20 +1,11 @@
-// Works table (admin only): work name, date, done tick, worker name,
-// cash-received tick, add + delete, collapsible add form.
+// Works table (admin only, inline dashboard card): work name, date, done
+// tick, worker name, cash-received tick, add + delete.
 
-const worksBtn = document.getElementById('worksBtn');
-const worksModal = document.getElementById('worksModal');
 const worksBody = document.getElementById('worksBody');
 const workForm = document.getElementById('workForm');
 const workAddToggle = document.getElementById('workAddToggle');
 const workFormWrap = document.getElementById('workFormWrap');
 const workCancelBtn = document.getElementById('workCancelBtn');
-
-if (worksBtn) {
-  worksBtn.addEventListener('click', () => {
-    worksModal.classList.remove('hidden');
-    loadWorks();
-  });
-}
 
 function openWorkForm() {
   workFormWrap.classList.add('open');
@@ -25,11 +16,6 @@ function closeWorkForm() {
   workFormWrap.classList.remove('open');
   workAddToggle.style.display = '';
   workForm.reset();
-}
-
-if (workAddToggle) {
-  workAddToggle.addEventListener('click', openWorkForm);
-  workCancelBtn.addEventListener('click', closeWorkForm);
 }
 
 async function loadWorks() {
@@ -61,7 +47,10 @@ async function deleteWork(id) {
   loadWorks();
 }
 
-if (workForm) {
+if (workForm && localStorage.getItem('role') === 'admin') {
+  workAddToggle.addEventListener('click', openWorkForm);
+  workCancelBtn.addEventListener('click', closeWorkForm);
+
   workForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const name = document.getElementById('workName').value;
@@ -72,4 +61,6 @@ if (workForm) {
     closeWorkForm();
     loadWorks();
   });
+
+  loadWorks();
 }

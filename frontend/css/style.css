@@ -34,6 +34,8 @@
   --acc-teal-soft: rgba(47, 168, 160, 0.16);
   --acc-amethyst: #9B7EDE;
   --acc-amethyst-soft: rgba(155, 126, 222, 0.18);
+  --acc-sapphire: #4FA8E8;
+  --acc-sapphire-soft: rgba(79, 168, 232, 0.16);
 }
 
 * { box-sizing: border-box; }
@@ -196,6 +198,7 @@ body.dashboard-page {
 .sidebar.accent-rose { --card-accent: var(--acc-rose); --card-accent-soft: var(--acc-rose-soft); }
 .sidebar.accent-teal { --card-accent: var(--acc-teal); --card-accent-soft: var(--acc-teal-soft); }
 .sidebar.accent-amethyst { --card-accent: var(--acc-amethyst); --card-accent-soft: var(--acc-amethyst-soft); }
+.sidebar.accent-sapphire { --card-accent: var(--acc-sapphire); --card-accent-soft: var(--acc-sapphire-soft); }
 
 .sidebar h3 {
   display: flex;
@@ -419,16 +422,6 @@ body.dashboard-page {
 
 #historyModal h3 { padding-right: 40px; }
 #salesModal h3 { padding-right: 40px; }
-#worksModal h3 { padding-right: 40px; }
-
-/* ---------- Works modal (table mode) ---------- */
-.works-modal-box {
-  max-width: 720px;
-  /* .add-toggle-btn / .btn-save / .btn-cancel read --card-accent, which is
-     normally only set on dashboard .sidebar cards - define it here too. */
-  --card-accent: var(--cyan);
-  --card-accent-soft: rgba(79, 195, 247, 0.16);
-}
 
 .works-table { width: 100%; border-collapse: collapse; margin-top: 14px; }
 
