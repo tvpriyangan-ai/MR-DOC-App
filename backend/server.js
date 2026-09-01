@@ -23,6 +23,7 @@ app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/activity-logs', require('./routes/activityLogRoutes'));
 app.use('/api/customers', require('./routes/customerRoutes'));
 app.use('/api/sales', require('./routes/salesRoutes'));
+app.use('/api/works', require('./routes/workRoutes'));
 
 // Serve the frontend static files (so Render can host both from one service)
 app.use(express.static(path.join(__dirname, '..', 'frontend')));

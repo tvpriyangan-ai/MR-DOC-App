@@ -419,6 +419,38 @@ body.dashboard-page {
 
 #historyModal h3 { padding-right: 40px; }
 #salesModal h3 { padding-right: 40px; }
+#worksModal h3 { padding-right: 40px; }
+
+/* ---------- Works modal (table mode) ---------- */
+.works-modal-box {
+  max-width: 720px;
+  /* .add-toggle-btn / .btn-save / .btn-cancel read --card-accent, which is
+     normally only set on dashboard .sidebar cards - define it here too. */
+  --card-accent: var(--cyan);
+  --card-accent-soft: rgba(79, 195, 247, 0.16);
+}
+
+.works-table { width: 100%; border-collapse: collapse; margin-top: 14px; }
+
+.works-table th {
+  text-align: left;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.works-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+
+.works-table tbody tr:hover { background: rgba(255, 255, 255, 0.03); }
+.works-table input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; }
 
 /* ---------- Sales modal (stats + chart) ---------- */
 .sales-modal-box { max-width: 700px; }

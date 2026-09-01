@@ -21,6 +21,7 @@
       <button id="salesBtn" class="admin-only">Sales</button>
       <button id="usersBtn" class="admin-only">Manage Users</button>
       <button id="customerBtn" class="admin-only">Customer</button>
+      <button id="worksBtn" class="admin-only">Works</button>
       <button id="historyBtn" class="admin-only">History</button>
       <span id="userLabel"></span>
       <button id="logoutBtn">Logout</button>
@@ -160,6 +161,42 @@
     </div>
   </div>
 
+  <div id="worksModal" class="modal hidden admin-only">
+    <div class="modal-box works-modal-box">
+      <button class="close-modal modal-close-x" data-target="worksModal" aria-label="Close">&times;</button>
+      <h3>Works</h3>
+
+      <button type="button" class="add-toggle-btn" id="workAddToggle">+ Add Work</button>
+      <div class="add-form-collapse" id="workFormWrap">
+        <form id="workForm" class="entry-form">
+          <input type="text" id="workName" placeholder="Work name" required>
+          <input type="date" id="workDate" required>
+          <input type="text" id="workWorkerName" placeholder="Worker name" required>
+          <div class="form-actions">
+            <button type="submit" class="btn-save">Save</button>
+            <button type="button" class="btn-cancel" id="workCancelBtn">Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="table-scroll">
+        <table class="works-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Date</th>
+              <th>Done</th>
+              <th>Worker</th>
+              <th>Cash Received</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="worksBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
   <script src="js/api.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/purchase.js"></script>
@@ -170,5 +207,6 @@
   <script src="js/users.js"></script>
   <script src="js/history.js"></script>
   <script src="js/customer.js"></script>
+  <script src="js/works.js"></script>
 </body>
 </html>
